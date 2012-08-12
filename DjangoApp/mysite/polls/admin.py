@@ -11,4 +11,8 @@ class PollAdmin(admin.ModelAdmin):
         ('Date Information', {'fields':['pub_date'], 'classes': ['collapse']}),
     ]
     inlines = [ChoiceInline]
+    list_display = ('question','pub_date','was_published_recently')
+    list_filter = ['pub_date']
+    search_fields = ['question']
+    date_hierarchy = 'pub_date'
 admin.site.register(Poll, PollAdmin)
